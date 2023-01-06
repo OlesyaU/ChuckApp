@@ -65,5 +65,16 @@ class Model {
 //        ОБЯЗАТЕЛЬНО НЕ ЗАБЫВАЕМ РЕЗЬЮМИТЬ ТАСКУ! Вызываем в апп делегате, или в координаторах или где загружаем аппку или контроллер определённый
         task.resume()
     }
-    
+
+    func downloadJokesList(queryText: String) {
+        let session = URLSession(configuration: .default)
+        guard  let url = URL(string: "https://api.chucknorris.io/jokes/search?query=\(queryText)") else {return}
+        let request = URLRequest(url: url, timeoutInterval: 10)
+
+        let task = session.dataTask(with: request) { [weak self] data, response, error in
+            if let error {
+              
+            }
+        }
+    }
 }
