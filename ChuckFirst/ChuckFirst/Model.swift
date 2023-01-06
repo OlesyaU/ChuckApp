@@ -71,8 +71,10 @@ class Model {
         guard  let url = URL(string: "https://api.chucknorris.io/jokes/search?query=\(queryText)") else {return}
         let request = URLRequest(url: url, timeoutInterval: 10)
 
-        let task = session.dataTask(with: request) { [weak self] data, response, error in
+        let task = session.dataTask(with: request) {data, response, error [weak self] in
+            
             if let error {
+                print(error)
               
             }
         }
