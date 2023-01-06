@@ -34,8 +34,8 @@ class Model {
 //          кастим респонс и берём статус код
             let statusCode = (response as? HTTPURLResponse)?.statusCode
             if  statusCode != 200 {
-                print("statusCode is \(statusCode)")
-                completion?(nil,"statusCode is \(statusCode)" )
+                print("statusCode is \(String(describing: statusCode))")
+                completion?(nil,"statusCode is \(String(describing: statusCode))" )
                 return
             }
             
@@ -66,17 +66,62 @@ class Model {
         task.resume()
     }
 
-    func downloadJokesList(queryText: String) {
-        let session = URLSession(configuration: .default)
-        guard  let url = URL(string: "https://api.chucknorris.io/jokes/search?query=\(queryText)") else {return}
-        let request = URLRequest(url: url, timeoutInterval: 10)
-
-        let task = session.dataTask(with: request) {data, response, error [weak self] in
-            
-            if let error {
-                print(error)
-              
-            }
+    func downloadJokesList(queryText: String,  completion: ((_ jokesArray: [String]?)-> Void)?) {
+        
+        guard let url = URL(string: "https://api.chucknorris.io/jokes/search?query=\(queryText)") else {
+            print("проблема с урлом")
+            return
         }
+        let session = URLSession(configuration: .default)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error {
+                print(error.localizedDescription)
+                completion?(nil)
+                return
+            }
+            
+            let statusCode = (response as? HTTPURLResponse)?.statusCode
+            
+            if statusCode != 200 {
+                print("Status code isn't 200, statusCode \(String(describing: statusCode))")
+                completion?(nil)
+                return
+            }
+            
+         
+     guard let data  else {
+         print("data - nil")
+         completion?(nil)
+         return
+            }
+            
+            do {
+                guard let answer = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print ("Error parcing json answer")
+                    return
+                }
+                guard let result =  answer["result"] as? [[String: Any]] else { print ("Error parcing json result ")
+                    return
+                }
+                
+                var resultArray: [String] = []
+                
+                for item in result {
+                    if let joketext = item["value"] as? String {
+                        resultArray.append(joketext)
+                        print(item["value"])
+                    }
+                }
+                completion?(resultArray)
+            }
+            catch {
+                completion?(nil)
+                print(error)
+            }
+       }
+        
+//        не забываем резьюмить таску!
+        task.resume()
     }
 }

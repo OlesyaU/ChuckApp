@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var actionItem: UIBarButtonItem!
     
+    @IBOutlet weak var refreshItem: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         actionItem.isEnabled = false
@@ -19,16 +21,17 @@ class ViewController: UIViewController {
     
     @IBAction func actionItemPush(_ sender: Any) {
         let textJoke = (jokeLabel.text ?? errorLabel.text) as String?
-        let activityVC = UIActivityViewController(activityItems: [textJoke ], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [textJoke], applicationActivities: nil)
         present(activityVC, animated: true)
         
     }
     
     @IBAction func refreshItemPush(_ sender: Any) {
+        refreshItem.isEnabled = false
         Model().downloadJoke { [weak self] textJoke, errorText in
             //           всё что касается интерфейса отправляем на главный поток
-            DispatchQueue.main.async {
-                
+            DispatchQueue.main.async { [ weak self] in
+                self?.refreshItem.isEnabled = true
                 if let textJoke {
                     self?.jokeLabel.text = textJoke
                     self?.actionItem.isEnabled = true

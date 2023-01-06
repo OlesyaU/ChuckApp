@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AYk-4p-Mh6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TRw-Ml-0e3">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Push refresh to download joke" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cX-Ad-7Um">
-                                <rect key="frame" x="16" y="84" width="361" height="519"/>
+                                <rect key="frame" x="15" y="83" width="361" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy1-y9-DY9">
-                                <rect key="frame" x="16" y="662" width="361" height="126"/>
+                                <rect key="frame" x="15" y="662" width="361" height="126"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -50,17 +50,49 @@
                         <outlet property="actionItem" destination="B7A-qQ-drX" id="bce-vZ-E17"/>
                         <outlet property="errorLabel" destination="Wy1-y9-DY9" id="QoB-im-8CC"/>
                         <outlet property="jokeLabel" destination="1cX-Ad-7Um" id="WuR-nm-9Ni"/>
+                        <outlet property="refreshItem" destination="t3p-H8-9cB" id="1ZD-iY-1ct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="197.70992366412213" y="-239.43661971830988"/>
+            <point key="canvasLocation" x="1124.4274809160304" y="-239.43661971830988"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Table View Controller-->
+        <scene sceneID="6XA-Wx-OZJ">
+            <objects>
+                <tableViewController id="nla-Md-O08" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dST-Cy-YeY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9Ei-Hq-tx5">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ei-Hq-tx5" id="nXE-QB-zZU">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nla-Md-O08" id="iSk-uU-he1"/>
+                            <outlet property="delegate" destination="nla-Md-O08" id="SuS-Nf-amu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qVX-eZ-Vhs"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xpL-57-yDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="511"/>
+        </scene>
+        <!--Random Joke-->
         <scene sceneID="Nsm-4q-vbW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AYk-4p-Mh6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Random Joke" image="rotate.3d" catalog="system" id="4fy-b7-mWI"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="h6v-cp-2qK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JtO-H7-2W5">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -72,10 +104,50 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSM-r0-fDx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-648" y="-239"/>
+            <point key="canvasLocation" x="278.62595419847327" y="-239.43661971830988"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wE2-cm-MbS">
+            <objects>
+                <tabBarController id="TRw-Ml-0e3" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DdO-qZ-Hcc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="AYk-4p-Mh6" kind="relationship" relationship="viewControllers" id="vy4-oP-3ke"/>
+                        <segue destination="0FB-0S-rio" kind="relationship" relationship="viewControllers" id="jTW-dh-8wj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YuC-oF-dhL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-708" y="115"/>
+        </scene>
+        <!--Joke list-->
+        <scene sceneID="BWh-84-Jv8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0FB-0S-rio" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Joke list" image="list.bullet" catalog="system" id="re2-lC-OSi"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="8GT-X3-7Qi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EfO-V8-dJo">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nla-Md-O08" kind="relationship" relationship="rootViewController" id="uba-Jm-OI0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Vj-Ru-lvK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279" y="511"/>
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="87"/>
+        <image name="rotate.3d" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
