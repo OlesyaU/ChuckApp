@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Push refresh to download joke" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cX-Ad-7Um">
-                                <rect key="frame" x="15" y="83" width="361" height="519"/>
+                                <rect key="frame" x="15" y="82" width="360" height="520"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy1-y9-DY9">
-                                <rect key="frame" x="15" y="662" width="361" height="126"/>
+                                <rect key="frame" x="15" y="662" width="360" height="126"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -57,21 +57,30 @@
             </objects>
             <point key="canvasLocation" x="1124.4274809160304" y="-239.43661971830988"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Search-->
         <scene sceneID="6XA-Wx-OZJ">
             <objects>
-                <tableViewController id="nla-Md-O08" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dST-Cy-YeY">
+                <tableViewController id="nla-Md-O08" customClass="SearchTableViewController" customModule="ChuckFirst" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dST-Cy-YeY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9Ei-Hq-tx5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="cTe-Sq-8l4" style="IBUITableViewCellStyleDefault" id="9Ei-Hq-tx5">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ei-Hq-tx5" id="nXE-QB-zZU">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cTe-Sq-8l4">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -80,7 +89,7 @@
                             <outlet property="delegate" destination="nla-Md-O08" id="SuS-Nf-amu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qVX-eZ-Vhs"/>
+                    <navigationItem key="navigationItem" title="Search" id="qVX-eZ-Vhs"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpL-57-yDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,7 +139,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0FB-0S-rio" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Joke list" image="list.bullet" catalog="system" id="re2-lC-OSi"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="8GT-X3-7Qi"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="8GT-X3-7Qi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EfO-V8-dJo">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

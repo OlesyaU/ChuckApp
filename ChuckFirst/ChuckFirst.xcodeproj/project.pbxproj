@@ -14,6 +14,7 @@
 		764708292966840200023CFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764708282966840200023CFB /* Assets.xcassets */; };
 		7647082C2966840200023CFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7647082A2966840200023CFB /* LaunchScreen.storyboard */; };
 		76470834296684D300023CFB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76470833296684D300023CFB /* Model.swift */; };
+		76B8A32F296847490047B0CC /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8A32E296847490047B0CC /* SearchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7647082B2966840200023CFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7647082D2966840200023CFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76470833296684D300023CFB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		76B8A32E296847490047B0CC /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7647082A2966840200023CFB /* LaunchScreen.storyboard */,
 				7647082D2966840200023CFB /* Info.plist */,
 				76470833296684D300023CFB /* Model.swift */,
+				76B8A32E296847490047B0CC /* SearchTableViewController.swift */,
 			);
 			path = ChuckFirst;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				764708242966840000023CFB /* ViewController.swift in Sources */,
 				764708202966840000023CFB /* AppDelegate.swift in Sources */,
+				76B8A32F296847490047B0CC /* SearchTableViewController.swift in Sources */,
 				764708222966840000023CFB /* SceneDelegate.swift in Sources */,
 				76470834296684D300023CFB /* Model.swift in Sources */,
 			);

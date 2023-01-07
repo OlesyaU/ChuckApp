@@ -14,16 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        Model().downloadJokesList(queryText: "cat") { jokesArray in
-            guard let arrayJokes = jokesArray else {print("Array with jokes is nil")
-                return
-            }
-            print(arrayJokes, separator: "\n", terminator: "\n")
-//            arrayJokes.forEach { joke in
-//                print(joke, separator: "\n", terminator: "\n")
-//            }
-        }
         return true
     }
     
