@@ -33,7 +33,8 @@ class ViewController: UIViewController {
             DispatchQueue.main.async { [ weak self] in
                 self?.refreshItem.isEnabled = true
                 if let textJoke {
-                    self?.jokeLabel.text = textJoke
+//                     тут мы присваиваем лейблу textJoke.value, тк изменили в модели метод немного и принимаем и возвращвем не стринг, а саму шутку....а тут берем только текст шутки
+                    self?.jokeLabel.text = textJoke.value
                     self?.actionItem.isEnabled = true
                 }
                 

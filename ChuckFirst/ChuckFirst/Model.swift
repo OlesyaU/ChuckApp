@@ -6,9 +6,34 @@
 //
 
 import Foundation
+//JSON {
+//"categories": [],
+//"created_at": "2020-01-05 13:42:23.484083",
+//"icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+//"id": "ENCeUlMOQtOrJZZ5vEw0Nw",
+//"updated_at": "2020-01-05 13:42:23.484083",
+//"url": "https://api.chucknorris.io/jokes/ENCeUlMOQtOrJZZ5vEw0Nw",
+//"value": "Super Man's nacked eye can withstand a bullet. Chuck Norris' middle finger can reflect a laser beam and kill the shooter between the eyes."
+//}
+
+// создаем структуру данных с полями которые называем в точности так как ключ в Json-е. Если прописать в структуре все поля- то соответственно будет доступ ко всем значениям /Если значение по ключу может быть потенциально опциональным- надо его таким и указывать в структуре например  var value: String?, чтобы не крашнуться
+// это структура для загрузки шутки
+struct Joke: Decodable {
+    var url: String
+    var value: String
+    
+}
+
+// а это для коллекции шуток
+struct Answer: Decodable {
+    var total: Int
+    var result: [Joke]
+}
 
 class Model {
-    func downloadJoke(completion: ((_ textJoke: String?, _ errorText: String?)-> Void)?) {
+//    метод до JSONDecoder()
+//    func downloadJoke(completion: ((_ textJoke: String?, _ errorText: String?)-> Void)?)
+    func downloadJoke(completion: ((_ joke: Joke?, _ errorText: String?)-> Void)?) {
         //        создаём сессию с конфигурацией по дефолту
         let session = URLSession(configuration: .default)
         //        преобразуем строку в урлу
@@ -40,11 +65,26 @@ class Model {
             //          ошибку в последнюю очередь лучше обрабатывать иначе на ней выйдет из метода- тапа еcли через гард ошибку проверять и не распарсить- выдает ошибку и выходит....дальше не идёт по методу...а можно вообще закомментить и не использовать...но можно и свои создать- всё зависит от хотелок. Если сначала делаем- то через иф лет - как тут...а потом собственно парсим дату))
             
             do {
+// реализация через JSONDecoder().decode лучше исользовать протокол , но тут маленькое приложение поэтому без
+//                первый вариант
+                /*
+               let joke = try JSONDecoder().decode(Joke.self, from: data)
+                completion?(joke.value, nil)
+                */
+                
+//                второй вариант
+                let joke = try JSONDecoder().decode(Joke.self, from: data)
+                
+                completion?(joke, nil)
+                
+                /*
+                реализация через JSONSerialization.jsonObject
                 if let answer = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                     if let textJoke = answer["value"]  as? String {
                         completion?(textJoke, nil)
                     }
                 }
+                 */
             }
             catch {
                 completion?(nil, error.localizedDescription)
@@ -54,7 +94,7 @@ class Model {
         //        ОБЯЗАТЕЛЬНО НЕ ЗАБЫВАЕМ РЕЗЬЮМИТЬ ТАСКУ! Вызываем в апп делегате, или в координаторах или где загружаем аппку или контроллер определённый
         task.resume()
     }
-    
+
     func downloadJokesList(queryText: String,  completion: ((_ jokesArray: [String]?)-> Void)?) {
         
         guard let url = URL(string: "https://api.chucknorris.io/jokes/search?query=\(queryText)") else {
@@ -86,6 +126,15 @@ class Model {
             }
             
             do {
+
+                let answer = try JSONDecoder().decode(Answer.self, from: data)
+                var answerArray: [String] = []
+                for item in answer.result {
+                    answerArray.append(item.value)
+                }
+                completion?(answerArray)
+             
+/*
                 guard let answer = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                     print ("Error parcing json answer")
                     return
@@ -102,6 +151,7 @@ class Model {
                     }
                 }
                 completion?(resultArray)
+                */
             }
             catch {
                 completion?(nil)
