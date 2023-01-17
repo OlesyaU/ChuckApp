@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                 self?.refreshItem.isEnabled = true
                 if let textJoke {
 //                     тут мы присваиваем лейблу textJoke.value, тк изменили в модели метод немного и принимаем и возвращвем не стринг, а саму шутку....а тут берем только текст шутки
-                    self?.jokeLabel.text = textJoke.value
+                    self?.jokeLabel.text = textJoke.textJoke
                     self?.actionItem.isEnabled = true
                 }
                 

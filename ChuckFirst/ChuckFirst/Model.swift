@@ -20,8 +20,12 @@ import Foundation
 // это структура для загрузки шутки
 struct Joke: Decodable {
     var url: String
-    var value: String
-    
+    var textJoke: String
+//    вот тут если мы хотим переименовать(сделать поле отличное от названия в Jsone- мы должны использовать CodingKeys вызываем просто начав писать в этой же структуре слово Coding- и компилятор подскажет...плюс мы дожны добавить роуВэлью Стринг)
+    enum CodingKeys: String, CodingKey {
+        case url
+        case textJoke = "value"
+    }
 }
 
 // а это для коллекции шуток
@@ -29,6 +33,8 @@ struct Answer: Decodable {
     var total: Int
     var result: [Joke]
 }
+
+
 
 class Model {
 //    метод до JSONDecoder()
@@ -130,7 +136,7 @@ class Model {
                 let answer = try JSONDecoder().decode(Answer.self, from: data)
                 var answerArray: [String] = []
                 for item in answer.result {
-                    answerArray.append(item.value)
+                    answerArray.append(item.textJoke)
                 }
                 completion?(answerArray)
              
